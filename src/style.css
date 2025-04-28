@@ -1,0 +1,330 @@
+.loader-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #1890ff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    /* 新增居中定位 */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 9998;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error-message {
+    position: fixed;
+    top: -100px;  /* 初始位置在可视区域外 */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff4d4f;
+    color: white;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 10000;
+    /* 新增动画效果 */
+    animation: slideInDown 0.5s ease-out forwards,
+               fadeOut 0.5s ease-out 2.5s forwards;
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translate(-50%, -100%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, -100%);
+    }
+}
+
+/* 新增全局样式 */
+body {
+    font-family: 'LXGW WenKai', sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+
+/* 步骤导航优化 */
+.step-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.step {
+    flex: 1;
+    text-align: center;
+    padding: 1rem;
+    color: #8c8c8c;
+    border-bottom: 2px solid #e8e8e8;
+    transition: all 0.3s;
+}
+
+.step.active {
+    color: #1890ff;
+    border-color: #1890ff;
+}
+
+/* 表单样式优化 */
+.form-step {
+    padding: 2rem;
+    background: #fafafa;
+    border-radius: 6px;
+    margin: 1rem 0;
+}
+
+input[type="text"], 
+input[type="password"], 
+input[type="url"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn-primary {
+    background: #1890ff;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background: #096dd9;
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem;
+        padding: 10px;
+    }
+    
+    .step-nav {
+        flex-direction: column;
+    }
+    
+    .step {
+        margin-bottom: 1rem;
+    }
+}
+
+
+/* 新增头部样式 */
+.app-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.app-logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+}
+
+/* 状态面板样式 */
+.status-panel {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin: 2rem 0;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95em;
+}
+
+.status-item i {
+  color: #1890ff;
+  width: 20px;
+  text-align: center;
+}
+
+/* 输入框交互动画 */
+input:focus {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24,144,255,0.2);
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* 新增成功提示样式 */
+.success-message {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #52c41a;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 10000;
+    animation: slideInDown 0.5s ease-out forwards,
+               fadeOut 0.5s ease-out 2.5s forwards;
+}
+
+.success-message i {
+    margin-right: 8px;
+}
+
+
+/* 新增步骤切换动画 */
+.form-step {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 0;
+    overflow: hidden;
+}
+
+.form-step.active {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 800px;
+    margin: 1rem 0;
+}
+
+/* 增强进度条动画 */
+.progress-fill {
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 新增状态面板动画 */
+.status-animation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.wave {
+    position: absolute;
+    background: rgba(24,144,255,0.1);
+    border-radius: 40%;
+    animation: wave 6s infinite linear;
+}
+
+@keyframes wave {
+    0% { transform: translateX(-50%) scale(1); opacity: 0.6; }
+    50% { transform: translateX(50%) scale(2); opacity: 0.3; }
+    100% { transform: translateX(-50%) scale(1); opacity: 0.6; }
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.input-with-icon {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.input-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8c8c8c;
+    transition: color 0.3s;
+}
+
+.input-with-icon:focus {
+    border-color: #1890ff;
+    box-shadow: 0 0 0 2px rgba(24,144,255,0.2);
+    padding-left: 45px;
+}
+
+.input-with-icon:focus + .input-icon {
+    color: #1890ff;
+    transform: translateY(-50%) scale(1.2);
+}
+
+.input-icon.fa-link {
+    font-size: 0.9em;
+}
+
+#serverUrl {
+    padding-right: 120px;
+}
+
+/* 新增服务器验证成功样式 */
+.server-valid {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #52c41a;
+    display: none;
+}
+
+.error-message small {
+    display: block;
+    font-size: 0.9em;
+    color: rgba(255,255,255,0.8);
+    margin-top: 8px;
+    line-height: 1.4;
+}
+
+/* 新增多行消息布局 */
+.error-message.multiline {
+    padding: 20px;
+    text-align: left;
+}

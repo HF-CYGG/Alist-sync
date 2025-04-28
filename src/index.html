@@ -1,0 +1,72 @@
+<div class="container">
+  <!-- 新增头部 -->
+  <header class="app-header">
+    <img src="https://cdn.jsdelivr.net/gh/alist-org/logo@main/logo.svg" class="app-logo" alt="AList Sync">
+    <h1>AList 文件同步系统</h1>
+  </header>
+
+  <!-- 步骤导航（保持现有结构） -->
+  <div class="step-nav">
+      <div class="step" data-step="1">服务器验证</div>
+      <div class="step" data-step="2">用户登录</div>
+      <div class="step" data-step="3">文件同步</div>
+  </div>
+
+  <!-- 服务器验证表单 -->
+  <form id="serverForm" class="form-step active">
+      <div class="server-info" style="margin-bottom:1rem; color:#666;">
+          <small>服务器地址
+          </small>
+      </div>
+      <div class="form-group">
+          <i class="fas fa-link input-icon"></i>
+          <input type="url" id="serverUrl" 
+                 placeholder="https://your-alist-server" 
+                 class="input-with-icon">
+      </div>
+      <button type="button" class="btn-primary" onclick="verifyServer()">
+          <i class="fas fa-check-circle"></i>
+          验证服务器
+      </button>
+  </form>
+
+  <!-- 用户登录表单 -->
+  <form id="loginForm" class="form-step">
+      <div class="form-group">
+          <i class="fas fa-user input-icon"></i>
+          <input type="text" id="loginUsername" placeholder="用户名" class="input-with-icon">
+      </div>
+      <div class="form-group">
+          <i class="fas fa-lock input-icon"></i>
+          <input type="password" id="loginPassword" placeholder="密码" class="input-with-icon">
+      </div>
+      <button type="button" class="btn-primary" onclick="handleLogin()">
+          <i class="fas fa-sign-in-alt"></i>
+          立即登录
+      </button>
+  </form>
+
+  <!-- 新增状态面板 -->
+  <div class="status-panel">
+    <!-- 新增动画容器 -->
+    <div class="status-animation">
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+    <div class="status-item">
+      <i class="fas fa-server"></i>
+      <span id="serverStatus">未连接</span> <!-- 确保此元素存在 -->
+    </div>
+    <div class="status-item">
+      <i class="fas fa-user"></i>
+      <span id="loginStatus">未登录</span>
+    </div>
+  </div>
+
+  <!-- 表单容器保持现有结构 -->
+</div>
+<link rel="stylesheet" href="./style.css">
+<script src="./auth.js"></script>
+<script src="./sync.js"></script>
+<script src="./main.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
